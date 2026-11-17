@@ -1,0 +1,81 @@
+{
+  "host": "db-01",
+  "collectedAt": "2026-11-18T03:14:02Z",
+  "categories": {
+    "processes": {
+      "views": {
+        "ps": [
+          {"id": "1", "label": "systemd", "detail": "/sbin/init"},
+          {"id": "388", "label": "sshd", "detail": "/usr/sbin/sshd -D"},
+          {"id": "640", "label": "postgres", "detail": "/usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/data"},
+          {"id": "655", "label": "postgres", "detail": "postgres: checkpointer"},
+          {"id": "902", "label": "crond", "detail": "/usr/sbin/crond -n"}
+        ],
+        "procfs": [
+          {"id": "1", "label": "systemd", "detail": "exe=/sbin/init"},
+          {"id": "388", "label": "sshd", "detail": "exe=/usr/sbin/sshd"},
+          {"id": "640", "label": "postgres", "detail": "exe=/usr/lib/postgresql/16/bin/postgres"},
+          {"id": "655", "label": "postgres", "detail": "exe=/usr/lib/postgresql/16/bin/postgres"},
+          {"id": "902", "label": "crond", "detail": "exe=/usr/sbin/crond"}
+        ],
+        "pidscan": [
+          {"id": "1", "label": "systemd", "detail": "kill -0 存活"},
+          {"id": "388", "label": "sshd", "detail": "kill -0 存活"},
+          {"id": "640", "label": "postgres", "detail": "kill -0 存活"},
+          {"id": "655", "label": "postgres", "detail": "kill -0 存活"},
+          {"id": "902", "label": "crond", "detail": "kill -0 存活"}
+        ]
+      }
+    },
+    "network": {
+      "views": {
+        "ss": [
+          {"id": "tcp:22", "label": "tcp:22", "detail": "state=LISTEN local=0.0.0.0:22 peer=0.0.0.0:*"},
+          {"id": "tcp:5432", "label": "tcp:5432", "detail": "state=LISTEN local=127.0.0.1:5432 peer=0.0.0.0:*"},
+          {"id": "udp:123", "label": "udp:123", "detail": "state=UNCONN local=0.0.0.0:123 peer=0.0.0.0:*"}
+        ],
+        "procnet": [
+          {"id": "tcp:22", "label": "tcp:22", "detail": "state=0A local_hex=00000000:0016 remote_hex=00000000:0000"},
+          {"id": "tcp:5432", "label": "tcp:5432", "detail": "state=0A local_hex=0100007F:1538 remote_hex=00000000:0000"},
+          {"id": "udp:123", "label": "udp:123", "detail": "state=07 local_hex=00000000:007B remote_hex=00000000:0000"}
+        ]
+      }
+    },
+    "modules": {
+      "views": {
+        "proc_modules": [
+          {"id": "ext4", "label": "ext4", "detail": "size=1040384 used_by=-"},
+          {"id": "mbcache", "label": "mbcache", "detail": "size=16384 used_by=ext4"},
+          {"id": "jbd2", "label": "jbd2", "detail": "size=139264 used_by=ext4"}
+        ],
+        "sysfs": [
+          {"id": "ext4", "label": "ext4", "detail": "/sys/module/ext4"},
+          {"id": "mbcache", "label": "mbcache", "detail": "/sys/module/mbcache"},
+          {"id": "jbd2", "label": "jbd2", "detail": "/sys/module/jbd2"},
+          {"id": "intel_pstate", "label": "intel_pstate", "detail": "/sys/module/intel_pstate"}
+        ],
+        "kallsyms": [
+          {"id": "ext4", "label": "ext4", "detail": "kallsyms 符号归属"},
+          {"id": "mbcache", "label": "mbcache", "detail": "kallsyms 符号归属"},
+          {"id": "jbd2", "label": "jbd2", "detail": "kallsyms 符号归属"}
+        ]
+      }
+    },
+    "files": {
+      "views": {
+        "ls": [
+          {"id": "/etc/fstab", "label": "fstab", "detail": "ls -A1 /etc"},
+          {"id": "/etc/hosts", "label": "hosts", "detail": "ls -A1 /etc"},
+          {"id": "/tmp/.X11-unix", "label": ".X11-unix", "detail": "ls -A1 /tmp"},
+          {"id": "/dev/shm/PostgreSQL.1042", "label": "PostgreSQL.1042", "detail": "ls -A1 /dev/shm"}
+        ],
+        "getdents": [
+          {"id": "/etc/fstab", "label": "fstab", "detail": "getdents64 直采 /etc"},
+          {"id": "/etc/hosts", "label": "hosts", "detail": "getdents64 直采 /etc"},
+          {"id": "/tmp/.X11-unix", "label": ".X11-unix", "detail": "getdents64 直采 /tmp"},
+          {"id": "/dev/shm/PostgreSQL.1042", "label": "PostgreSQL.1042", "detail": "getdents64 直采 /dev/shm"}
+        ]
+      }
+    }
+  }
+}

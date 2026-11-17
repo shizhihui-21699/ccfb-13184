@@ -1,0 +1,92 @@
+{
+  "host": "web-01",
+  "collectedAt": "2026-11-18T03:12:44Z",
+  "categories": {
+    "processes": {
+      "views": {
+        "ps": [
+          {"id": "1", "label": "systemd", "detail": "/sbin/init"},
+          {"id": "423", "label": "sshd", "detail": "/usr/sbin/sshd -D"},
+          {"id": "812", "label": "nginx", "detail": "nginx: master process /usr/sbin/nginx"},
+          {"id": "844", "label": "node", "detail": "/usr/bin/node /srv/app/server.js"},
+          {"id": "901", "label": "crond", "detail": "/usr/sbin/crond -n"}
+        ],
+        "procfs": [
+          {"id": "1", "label": "systemd", "detail": "exe=/sbin/init"},
+          {"id": "423", "label": "sshd", "detail": "exe=/usr/sbin/sshd"},
+          {"id": "812", "label": "nginx", "detail": "exe=/usr/sbin/nginx"},
+          {"id": "844", "label": "node", "detail": "exe=/usr/bin/node"},
+          {"id": "901", "label": "crond", "detail": "exe=/usr/sbin/crond"}
+        ],
+        "pidscan": [
+          {"id": "1", "label": "systemd", "detail": "kill -0 存活"},
+          {"id": "423", "label": "sshd", "detail": "kill -0 存活"},
+          {"id": "812", "label": "nginx", "detail": "kill -0 存活"},
+          {"id": "844", "label": "node", "detail": "kill -0 存活"},
+          {"id": "901", "label": "crond", "detail": "kill -0 存活"},
+          {"id": "1337", "label": "?", "detail": "kill -0 存活; 但 /proc/1337/comm 不可读、/proc/1337 目录不存在"}
+        ]
+      }
+    },
+    "network": {
+      "views": {
+        "ss": [
+          {"id": "tcp:22", "label": "tcp:22", "detail": "state=LISTEN local=0.0.0.0:22 peer=0.0.0.0:*"},
+          {"id": "tcp:80", "label": "tcp:80", "detail": "state=LISTEN local=0.0.0.0:80 peer=0.0.0.0:*"},
+          {"id": "tcp:443", "label": "tcp:443", "detail": "state=LISTEN local=0.0.0.0:443 peer=0.0.0.0:*"},
+          {"id": "udp:53", "label": "udp:53", "detail": "state=UNCONN local=127.0.0.53:53 peer=0.0.0.0:*"}
+        ],
+        "procnet": [
+          {"id": "tcp:22", "label": "tcp:22", "detail": "state=0A local_hex=00000000:0016 remote_hex=00000000:0000"},
+          {"id": "tcp:80", "label": "tcp:80", "detail": "state=0A local_hex=00000000:0050 remote_hex=00000000:0000"},
+          {"id": "tcp:443", "label": "tcp:443", "detail": "state=0A local_hex=00000000:01BB remote_hex=00000000:0000"},
+          {"id": "udp:53", "label": "udp:53", "detail": "state=07 local_hex=3500007F:0035 remote_hex=00000000:0000"},
+          {"id": "tcp:4444", "label": "tcp:4444", "detail": "state=0A(LISTEN) local_hex=00000000:115C remote_hex=00000000:0000 —— /proc/net/tcp 中存在监听套接字，但 ss 未报告"}
+        ]
+      }
+    },
+    "modules": {
+      "views": {
+        "proc_modules": [
+          {"id": "snd", "label": "snd", "detail": "size=106496 used_by=snd_intel8x0"},
+          {"id": "xfs", "label": "xfs", "detail": "size=1818624 used_by=-"},
+          {"id": "crc32c_intel", "label": "crc32c_intel", "detail": "size=16384 used_by=xfs"},
+          {"id": "intel_rapl", "label": "intel_rapl", "detail": "size=28672 used_by=-"}
+        ],
+        "sysfs": [
+          {"id": "snd", "label": "snd", "detail": "/sys/module/snd"},
+          {"id": "xfs", "label": "xfs", "detail": "/sys/module/xfs"},
+          {"id": "crc32c_intel", "label": "crc32c_intel", "detail": "/sys/module/crc32c_intel"},
+          {"id": "intel_rapl", "label": "intel_rapl", "detail": "/sys/module/intel_rapl"},
+          {"id": "intel_pstate", "label": "intel_pstate", "detail": "/sys/module/intel_pstate"},
+          {"id": "evillkm", "label": "evillkm", "detail": "/sys/module/evillkm 存在，但 /proc/modules 中无此模块"}
+        ],
+        "kallsyms": [
+          {"id": "snd", "label": "snd", "detail": "kallsyms 符号归属"},
+          {"id": "xfs", "label": "xfs", "detail": "kallsyms 符号归属"},
+          {"id": "crc32c_intel", "label": "crc32c_intel", "detail": "kallsyms 符号归属"},
+          {"id": "intel_rapl", "label": "intel_rapl", "detail": "kallsyms 符号归属"},
+          {"id": "evillkm", "label": "evillkm", "detail": "kallsyms 中 312 个符号归属 [evillkm]，确认为已加载 LKM"}
+        ]
+      }
+    },
+    "files": {
+      "views": {
+        "ls": [
+          {"id": "/usr/lib/libc.so.6", "label": "libc.so.6", "detail": "ls -A1 /usr/lib"},
+          {"id": "/usr/lib/libssl.so.3", "label": "libssl.so.3", "detail": "ls -A1 /usr/lib"},
+          {"id": "/dev/shm/sem.app", "label": "sem.app", "detail": "ls -A1 /dev/shm"},
+          {"id": "/tmp/systemd-private-a1b2", "label": "systemd-private-a1b2", "detail": "ls -A1 /tmp"}
+        ],
+        "getdents": [
+          {"id": "/usr/lib/libc.so.6", "label": "libc.so.6", "detail": "getdents64 直采 /usr/lib"},
+          {"id": "/usr/lib/libssl.so.3", "label": "libssl.so.3", "detail": "getdents64 直采 /usr/lib"},
+          {"id": "/usr/lib/.xhide", "label": ".xhide", "detail": "getdents64 直采 /usr/lib —— ls 不可见的隐藏目录"},
+          {"id": "/dev/shm/sem.app", "label": "sem.app", "detail": "getdents64 直采 /dev/shm"},
+          {"id": "/dev/shm/.kworker", "label": ".kworker", "detail": "getdents64 直采 /dev/shm —— ls 不可见的隐藏文件"},
+          {"id": "/tmp/systemd-private-a1b2", "label": "systemd-private-a1b2", "detail": "getdents64 直采 /tmp"}
+        ]
+      }
+    }
+  }
+}
